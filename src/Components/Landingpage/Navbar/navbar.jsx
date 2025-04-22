@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React from 'react';
 import { useState , useEffect } from "react";
 import { Link , useLocation} from "react-router-dom";
@@ -12,6 +11,7 @@ const Navbar = () => {
     { name: "Home", link: "/home" },
     { name: "About Us", link: "/about-us" },
     { name: "Courses", link: "/course-catalogue" },
+    { name: "Bootcamp", link: "/boot-camp" },
     { name: "Pricing", link: "/coming-soon" },
     { name: "Resources", link: "/coming-soon" },
     { name: "Mentorship", link: "/coming" },
@@ -24,15 +24,13 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Get the current pathname and find the matching link
+   
     const currentPath = location.pathname;
     const matchingLink = Links.find((link) => currentPath.startsWith(link.link));
 
-    // Set the active link based on the matching link
     if (matchingLink) {
       setActiveLink(matchingLink.name);
     } else {
-      // Set a default active link if no match is found
       setActiveLink("Home");
     }
   }, [location.pathname, Links]);
@@ -41,6 +39,7 @@ const Navbar = () => {
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
     setOpen(false);
+   
   };
 
   return (
